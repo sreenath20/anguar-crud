@@ -1,0 +1,7 @@
+table, th, td {
+    border:1px solid black;
+  }
+
+  .ford {
+    background-color: rgb(30, 101, 233);
+  }
