@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ExponentialPipe } from './pipes/exponential.pipe';
 import { SortproductPipe } from './pipes/sortproduct.pipe';
+import { SearchproductsPipe } from './pipes/searchproducts.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExponentialPipe,
-    SortproductPipe
+    SortproductPipe,
+    SearchproductsPipe
   ],
   imports: [
     BrowserModule,

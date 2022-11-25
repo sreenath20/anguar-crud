@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  query:string="";
   today: number = Date.now();
   value:number = 1234;
   pi: number = 3.14159265359;

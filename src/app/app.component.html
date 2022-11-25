@@ -61,6 +61,32 @@
 </div>
 
 
+<div >
+
+  <h6>Products details Table:</h6>
+
+  Search:<input type="text" [(ngModel)]="query" name="queryName">
+  {{query}}
+  <table *ngIf="products.length >0" >
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Price</th>
+    
+  </tr>
+  <tr *ngFor="let product of products | searchproducts : query">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    
+  </tr>
+  </table>
+ 
+
+</div>
+
+
+
 
 <h3>ngClass</h3>
 
