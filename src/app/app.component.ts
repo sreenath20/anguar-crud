@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  today: number = Date.now();
+  value:number = 1234;
+  pi: number = 3.14159265359;
+  price:number = 0.1234;
+  products=[
+    {id:"2",name:"HeadSet",price:"1500.0"},
+    
+    {id:"5",name:"KeyBoard",price:"400.0"},
+    {id:"3",name:"USB",price:"800.0"},
+    {id:"1",name:"Mouse",price:"100.0"},
+    
+  ];
+
   title = 'Employee-app-demo';
    car={id:1,name:"Maruthi",price:450000.0};
    img_url = "assets/resource/disny.jpg";

@@ -1,8 +1,66 @@
+<h1>Angular Pipes</h1>
+<h3>Build in pipes: </h3>
+<h3>Build in pipes:Date </h3>
 
+{{today | date}}<br>
+{{today | date:'medium'}}<br>
+{{today | date:'shortTime'}}<br>
+{{today | date:'mm:ss'}}<br>
+{{today | date:'yyyy:dd:MM'}}<br>
+<h3>Build in pipes:uppercase/lowercase/titlecase </h3>
+{{'hello ford' | titlecase}}<br>
+{{'hello ford' | uppercase}}<br>
+{{'hello ford' | lowercase}}<br>
+<h3>Build in pipes:currency</h3>
+{{value | currency}}<br>
+{{value | currency:'INR'}}<br>
+{{value | currency:'USD'}}<br>
+{{value | currency:'EUR'}}<br>
+{{value | currency:'EUR':'symbol':'4.2-2'}}<br>
+{{value | currency:'EUR':'symbol':'4.2-4'}}<br>
 
-
-
+<h3>Build in pipes:number</h3>
+{{pi | number}}<br>
+{{pi | number:'2.2-4'}}<br>
 <h1>Angular directives .</h1>
+<h3>Build in pipes:percent</h3>
+{{price | percent}}<br>
+{{price | percent:'2.2-2'}}<br>
+
+<h3>Build in pipes:Chaining of more than 1 pipe</h3>
+
+{{ today | date | uppercase}}
+
+<h3>Custom  pipes:'ng generate pipe piepName'. exponential</h3>
+{{2|exponential:2}}<br>
+{{5|exponential:3}}<br>
+{{10|exponential:3}}<br>
+
+<h3>display products using *ngFor</h3>
+<div>
+  <ol>
+    <li *ngFor='let product of products ' >{{product.name}}</li>
+  </ol>
+</div>
+<div>
+  <ol>
+    <li *ngFor='let product of products | slice:0:2' >{{product.name}}</li>
+  </ol>
+</div>
+<div>
+  <ol>
+    <li *ngFor='let product of products | slice:2' >{{product.name}}</li>
+  </ol>
+</div>
+
+<h3>sort  products using custom pipe by price</h3>
+<div>
+  <ol>
+    <li *ngFor='let product of products | sortproduct' >{{product.name}}</li>
+  </ol>
+</div>
+
+
 
 <h3>ngClass</h3>
 
