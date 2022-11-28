@@ -1,0 +1,307 @@
+<p>demo works!</p>
+<!-- 
+
+<h1>User defined data types by custom class</h1>
+{{product.getId}}
+{{product.name}}
+{{product.price}}
+
+<table *ngIf="productsList2.length >0" >
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Price</th>
+    
+  </tr>
+  <tr *ngFor="let product of productsList2 ">
+    <td>{{product.getId}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    
+  </tr>
+  </table>
+
+<h1>Angular Pipes</h1>
+<h3>Build in pipes: </h3>
+<h3>Build in pipes:Date </h3>
+
+{{today | date}}<br>
+{{today | date:'medium'}}<br>
+{{today | date:'shortTime'}}<br>
+{{today | date:'mm:ss'}}<br>
+{{today | date:'yyyy:dd:MM'}}<br>
+<h3>Build in pipes:uppercase/lowercase/titlecase </h3>
+{{'hello ford' | titlecase}}<br>
+{{'hello ford' | uppercase}}<br>
+{{'hello ford' | lowercase}}<br>
+<h3>Build in pipes:currency</h3>
+{{value | currency}}<br>
+{{value | currency:'INR'}}<br>
+{{value | currency:'USD'}}<br>
+{{value | currency:'EUR'}}<br>
+{{value | currency:'EUR':'symbol':'4.2-2'}}<br>
+{{value | currency:'EUR':'symbol':'4.2-4'}}<br>
+
+<h3>Build in pipes:number</h3>
+{{pi | number}}<br>
+{{pi | number:'2.2-4'}}<br>
+<h1>Angular directives .</h1>
+<h3>Build in pipes:percent</h3>
+{{price | percent}}<br>
+{{price | percent:'2.2-2'}}<br>
+
+<h3>Build in pipes:Chaining of more than 1 pipe</h3>
+
+{{ today | date | uppercase}}
+
+<h3>Custom  pipes:'ng generate pipe piepName'. exponential</h3>
+{{2|exponential:2}}<br>
+{{5|exponential:3}}<br>
+{{10|exponential:3}}<br>
+
+<h3>display products using *ngFor</h3>
+<div>
+  <ol>
+    <li *ngFor='let product of products ' >{{product.name}}</li>
+  </ol>
+</div>
+<div>
+  <ol>
+    <li *ngFor='let product of products | slice:0:2' >{{product.name}}</li>
+  </ol>
+</div>
+<div>
+  <ol>
+    <li *ngFor='let product of products | slice:2' >{{product.name}}</li>
+  </ol>
+</div>
+
+<h3>sort  products using custom pipe by price</h3>
+<div>
+  <ol>
+    <li *ngFor='let product of products | sortproduct' >{{product.name}}</li>
+  </ol>
+</div>
+
+
+<div >
+
+  <h6>Products details Table:</h6>
+
+  Search:<input type="text" [(ngModel)]="query" name="queryName">
+  {{query}}
+  <table *ngIf="products.length >0" >
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Price</th>
+    
+  </tr>
+  <tr *ngFor="let product of products | searchproducts : query">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    
+  </tr>
+  </table>
+ 
+
+</div>
+
+
+
+
+<h3>ngClass</h3>
+
+
+<h1 [ngClass]="applyCss ? 'ford' : '' "> Welcome to Angular Demo</h1>
+<h3>ngStyle</h3>
+
+<div [ngStyle]="currentStyles">
+  This div is initially italic, normal weight, and extra large (24px).
+</div>
+
+
+
+
+<h3>*ngIf </h3>
+<div *ngIf="myDiv">
+Car details:  
+  {{car.name}}
+</div>
+<h3>*ngSwitch</h3>
+
+<div [ngSwitch]="options">
+
+<p *ngSwitchCase="'A'"> Para A</p>
+<p *ngSwitchCase="'B'"> Para B</p>
+<p *ngSwitchCase="'C'"> Para C</p>
+<div *ngSwitchCase="'D'"> 
+  Car id: {{car.id}}<br>
+car Name:{{car.name}}<br>
+Car price: {{car.price}}<br>
+</div>
+<p *ngSwitchDefault >Default  Para</p>
+
+</div>
+<h3>*ngFor</h3>
+<div *ngFor="let name of empNames">
+  Name:{{name}}
+</div>
+
+
+
+
+
+
+
+
+<div *ngIf="!isUpdate">
+
+  <h6>Employee details Table:</h6>
+
+  <table *ngIf="employees.length >0" >
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let emp of employees">
+    <td>{{emp.id}}</td>
+    <td>{{emp.name}}</td>
+    <td>{{emp.salary}}</td>
+    <td><button (click)="deleteEmployeeById(emp.id)">Delete</button></td>
+    <td><button (click)="updateEmployeeFun(emp)">Update</button></td>
+    
+  </tr>
+  </table>
+  <button (click)="sortEmpByName()">Sort by name</button>
+  
+
+</div>
+<div *ngIf="isUpdate">
+
+  <h6>Update employee:</h6>
+  <form>
+     Id: <input type="text" [(ngModel)]="updateEmployee.id" name="id" disabled ><br>
+      Name:<input type="text" [(ngModel)]="updateEmployee.name" name="name"><br>
+      Salary:<input type="number" [(ngModel)]="updateEmployee.salary" name="salary">
+      <input type="button" (click)="saveUpdatedEmployee()" value="Update">
+    </form>
+  
+   
+  </div>
+
+<div>
+
+<h6>Add new employee:</h6>
+<form>
+   Id: <input type="text" [(ngModel)]="newEmployee.id" name="id" ><br>
+    Name:<input type="text" [(ngModel)]="newEmployee.name" name="name"><br>
+    Salary:<input type="number" [(ngModel)]="newEmployee.salary" name="salary">
+    <input type="button" (click)="addNewEmployee()" value="Add">
+  </form>
+
+ 
+</div>
+
+
+  
+  
+
+
+
+
+
+
+
+<h2>{{title}}</h2>
+<h1>One way data Binding.</h1>
+<h3>Interpolation</h3>
+Car id: {{car.id}}<br>
+car Name:{{car.name}}<br>
+Car price: {{car.price}}<br>
+<img *ngIf="myDiv" src={{img_url}}>
+<h3>Property binding:</h3>
+<img *ngIf="myDiv" [src]="img_url">
+
+<form>
+  <input [type]="input_type" [disabled]="isDisabled">  
+  <input type="button" (click)="onClick()" [value]="button_value">  
+ </form>
+
+  <h3>Two data binding</h3>
+  <form>
+    <input type="text" [(ngModel)]="userName" name="fName">
+  <input type="button" (click)="displayName()" value="Display">
+  </form> 
+  
+    You just typed:{{userName}}
+  
+    <h3>Form binding to car object</h3>
+    <h3>Your car Details:</h3>
+  Car id: {{car.id}}<br>
+  car Name:{{car.name}}<br>
+  Car price: {{car.price}}<br>
+  <hr>
+  <h6>Edit your car info:</h6>
+  <form>
+    <input type="text" [(ngModel)]="car.id" name="id" disabled>
+    <input type="text" [(ngModel)]="car.name" name="name">
+    <input type="number" [(ngModel)]="car.price" name="price">
+  </form>
+  
+
+
+
+
+<img src="../assets/resource/fish.jpg" alt="fish" width="500" height="600">
+
+<img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+
+
+<a href={{url}}>w3 schools</a>
+
+<pre>
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+
+<p class="ford">
+  My Bonnie lies over the ocean.<br>
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+
+</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+</table>
+<hr>
+
+<h2>User Login</h2>
+<hr> -->
