@@ -5,6 +5,7 @@ import { AddEmployeeComponent } from './component/add-employee/add-employee.comp
 import { ContactComponent } from './component/contact/contact.component';
 import { DemoComponent } from './component/demo/demo.component';
 import { DisplayEmployeeComponent } from './component/display-employee/display-employee.component';
+import { ErrorComponent } from './component/error/error.component';
 import { HelpComponent } from './component/help/help.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'demo', component: DemoComponent, canActivate:[UserAuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'add/employee', component: AddEmployeeComponent },
-  { path: 'display/employee', component: DisplayEmployeeComponent }
+  { path: 'display/employee', component: DisplayEmployeeComponent },
+  { path: '**', component:  ErrorComponent}
   
 ];
 

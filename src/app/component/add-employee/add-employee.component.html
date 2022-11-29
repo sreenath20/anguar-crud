@@ -17,5 +17,10 @@
         <td>Employee salary:</td>
         <td><input type="number" [(ngModel)] = "newEmployee.salary" name="empSalary"></td>
     </tr>
+    
+    <tr>
+        <td>Employee password:</td>
+        <td><input type="password" [(ngModel)] = "newEmployee.password" name="empPassword"></td>
+    </tr>
     <tr><input type="button" (click)="addUser()" value ="Add"></tr>
 </table>

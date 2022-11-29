@@ -16,6 +16,7 @@ import { UserAuthGuard } from './auth/user-auth.guard';
 import { EmployeeService } from './service/employee.service';
 import { AddEmployeeComponent } from './component/add-employee/add-employee.component';
 import { DisplayEmployeeComponent } from './component/display-employee/display-employee.component';
+import { ErrorComponent } from './component/error/error.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DisplayEmployeeComponent } from './component/display-employee/display-e
     DemoComponent,
     LoginComponent,
     AddEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

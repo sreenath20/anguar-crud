@@ -3,9 +3,10 @@
 <h1>User Login:</h1>
 <form>
   User Name:
-    <input type="text" [(ngModel)]="user.name" name="name"><br>
+    <input type="text" [(ngModel)]="user.id" name="name"><br>
     Password:
   <input type="password" [(ngModel)]="user.password" name="password"><br>
   <input type="button" (click)="login()" value="Login">
+  <input type="button" (click)="logout()" value="Log out">
 </form>
 
