@@ -9,7 +9,7 @@ export class EmployeeService {
   employees:Employee[]=[];
 
   constructor() {
-    
+
    }
   //CRUD
 
@@ -30,5 +30,16 @@ export class EmployeeService {
   public getAllEmployees():Employee[]{
     return this.employees;
   }
+  public updateEmployee(employee:Employee){
+    // complete the logic
+  }
 
+  public deleteEmployee(employee:Employee){
+    // complete the logic
+  }
+  
+  public deleteEmployeeById(employeeId:number){
+    // complete the logic
+  }
+  
 }
