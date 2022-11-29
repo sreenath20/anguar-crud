@@ -12,6 +12,10 @@ import { HelpComponent } from './component/help/help.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { DemoComponent } from './component/demo/demo.component';
 import { LoginComponent } from './component/login/login.component';
+import { UserAuthGuard } from './auth/user-auth.guard';
+import { EmployeeService } from './service/employee.service';
+import { AddEmployeeComponent } from './component/add-employee/add-employee.component';
+import { DisplayEmployeeComponent } from './component/display-employee/display-employee.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,16 @@ import { LoginComponent } from './component/login/login.component';
     HelpComponent,
     ContactComponent,
     DemoComponent,
-    LoginComponent
+    LoginComponent,
+    AddEmployeeComponent,
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserAuthGuard,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,21 @@
+<p>add-employee works!</p>
+
+<h1> Add new Employee :</h1>
+
+<table>
+    <tr>
+        <td>Employee Id:</td>
+        <td><input type="text" [(ngModel)] = "newEmployee.id" name="empId"></td>
+    </tr>
+    
+    <tr>
+        <td>Employee Name:</td>
+        <td><input type="text" [(ngModel)] = "newEmployee.name" name="empname"></td>
+    </tr>
+    
+    <tr>
+        <td>Employee salary:</td>
+        <td><input type="number" [(ngModel)] = "newEmployee.salary" name="empSalary"></td>
+    </tr>
+    <tr><input type="button" (click)="addUser()" value ="Add"></tr>
+</table>
