@@ -10,6 +10,9 @@ import { HelpComponent } from './component/help/help.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 
+import { DemoRestComponent } from './component/rest/demo/demo.component';
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
@@ -18,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'add/employee', component: AddEmployeeComponent },
   { path: 'display/employee', component: DisplayEmployeeComponent },
+  { path: 'rest/demo', component: DemoRestComponent},
   { path: '**', component:  ErrorComponent}
   
 ];
