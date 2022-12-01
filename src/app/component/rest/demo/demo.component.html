@@ -1,5 +1,9 @@
 <p>Rest demo works!</p>
-
-<h1 *ngIf="greeting">{{greeting}}</h1>
+<div *ngIf="greeting" class="alert alert-success">
+    <h1 >{{greeting}}</h1> 
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+    <h1 >{{errorMessage}}</h1> 
+</div>
 
 <input type="button" (click)="getGreeting()" value="Greet">

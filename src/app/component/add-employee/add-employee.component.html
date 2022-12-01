@@ -1,5 +1,13 @@
 <p>add-employee works!</p>
 
+
+<div *ngIf="msg" class="alert alert-success">
+    <h1 >{{msg}}</h1> 
+</div>
+
+<div *ngIf="errorMsg" class="alert alert-danger">
+    <h1 >{{errorMsg}}</h1> 
+</div>
 <h1> Add new Employee :</h1>
 
 <table>
@@ -22,5 +30,5 @@
         <td>Employee password:</td>
         <td><input type="password" [(ngModel)] = "newEmployee.password" name="empPassword"></td>
     </tr>
-    <tr><input type="button" (click)="addUser()" value ="Add"></tr>
+    <tr><input type="button" class="btn btn-success" (click)="addUser()" value ="Add"></tr>
 </table>
