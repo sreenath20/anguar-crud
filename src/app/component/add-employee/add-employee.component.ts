@@ -10,6 +10,10 @@ import { EmployeeService } from 'src/app/service/employee.service';
 })
 export class AddEmployeeComponent {
 
+// for templet driven form validation
+userName!:string;
+areaPincode!:number;
+
   msg="";
   errorMsg="";
   newEmployee:Employee= new Employee();
@@ -22,7 +26,7 @@ addUser(){
  // this.employeeService.addEmployee(this.newEmployee);
  this.empRestService.addEmployee(this.newEmployee).subscribe(
    (data)=>{this.msg=data;this.errorMsg="";},
-   (error)=>{this.msg="";this.errorMsg=error}
+   (error)=>{this.msg="";this.errorMsg=error.message;}
  );
 }
 

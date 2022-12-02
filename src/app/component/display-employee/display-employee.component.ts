@@ -13,20 +13,28 @@ export class DisplayEmployeeComponent implements OnInit {
   employees: Employee[] = [];
   msg!: string;
   errorMsg!: string;
+
   constructor(private employeeService: EmployeeService, private empRestService: EmployeeRestService) { }
   ngOnInit(): void {
     //this.employees = this.employeeService.getAllEmployees();
     this.empRestService.getAllEmployees().subscribe(
-      (data) => {
-        this.employees = data;
-        this.errorMsg = "";
-      },
-      (error) => { this.errorMsg = "Could not display Employees." }
+
+      {
+        next: (data) => {
+          this.employees = data;
+          this.errorMsg = "";
+        }
+        ,
+        error: (error) => { this.errorMsg = "Could not display Employees." }
+        ,
+        complete:()=>{console.log("Loaded all employees.")}
+      }
+
     );
   }
 
   deleteEmployee(empId: number) {
-   
+
     if (window.confirm("Are you sure to Delte Employee id" + empId))
 
       this.empRestService.deleteEmployee(empId).subscribe(
@@ -35,7 +43,10 @@ export class DisplayEmployeeComponent implements OnInit {
           this.employees = this.employees.filter((emp) => emp.id != empId);
           this.msg = data; this.errorMsg = "";
         },
-        (error) => { this.errorMsg = error; this.msg = ""; }
+        (error) => {
+          console.log(error);
+          this.errorMsg = error.message; this.msg = "";
+        }
 
       )
 

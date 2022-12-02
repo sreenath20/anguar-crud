@@ -2,33 +2,99 @@
 
 
 <div *ngIf="msg" class="alert alert-success">
-    <h1 >{{msg}}</h1> 
+    <h1>{{msg}}</h1>
 </div>
 
 <div *ngIf="errorMsg" class="alert alert-danger">
-    <h1 >{{errorMsg}}</h1> 
+    <h1>{{errorMsg}}</h1>
 </div>
-<h1> Add new Employee :</h1>
 
-<table>
-    <tr>
-        <td>Employee Id:</td>
-        <td><input type="text" [(ngModel)] = "newEmployee.id" name="empId"></td>
-    </tr>
+<h1> Add new Employee :</h1>
+<form autocomplete="on" ngNativeValidate>
+    <table>
+        <tr>
+            <td>Employee Id:</td>
+            <td><input type="text" [(ngModel)]="newEmployee.id" id="empId" pattern="[0-9]{1,5}"
+                    title="Min 1  and max 5 digits expected for id." name="empId" required></td>
+        </tr>
+
+        <tr>
+            <td>Employee Name:</td>
+            <td><input type="text" [(ngModel)]="newEmployee.name" name="empname" pattern="[A-Za-z]{3,30}"
+                    title="Min 3  and max 30 chars[no special chars] expected for name." required></td>
+        </tr>
+
+        <tr>
+            <td>Employee salary:</td>
+            <td><input type="number" [(ngModel)]="newEmployee.salary" name="empSalary"></td>
+        </tr>
+
+        <tr>
+            <td>Employee password:</td>
+            <td><input type="password" [(ngModel)]="newEmployee.password" name="empPassword"></td>
+        </tr>
+        <tr><input type="submit" class="btn btn-success" (click)="addUser()" value="Add"></tr>
+    </table>
+</form>
+
+<h1> validation demo using HTML</h1>
+<form action="/action_page.php">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+<h1> Validations using template-driven forms </h1>
+
+<form #demoForm="ngForm">
+<div [hidden]="demoForm.submitted">
+
+   
+        <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob"
+            [(ngModel)]="userName" #name="ngModel">
     
-    <tr>
-        <td>Employee Name:</td>
-        <td><input type="text" [(ngModel)] = "newEmployee.name" name="empname"></td>
-    </tr>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
     
-    <tr>
-        <td>Employee salary:</td>
-        <td><input type="number" [(ngModel)] = "newEmployee.salary" name="empSalary"></td>
-    </tr>
+            <div *ngIf="name.errors?.['required']">
+                Name is required.
+            </div>
+            <div *ngIf="name.errors?.['minlength']">
+                Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors?.['forbiddenName']">
+                Name cannot be Bob.
+            </div>
     
-    <tr>
-        <td>Employee password:</td>
-        <td><input type="password" [(ngModel)] = "newEmployee.password" name="empPassword"></td>
-    </tr>
-    <tr><input type="button" class="btn btn-success" (click)="addUser()" value ="Add"></tr>
-</table>
+        </div>
+    
+        <input type="text" id="areaPincode" name="areaPincode" class="form-control" required minlength="4" 
+        [(ngModel)]="areaPincode" pattern = "[0-9]{4}" #pincode="ngModel">
+
+        <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)" class="alert alert-danger">
+    
+            <div *ngIf="pincode.errors?.['required']">
+                Pincode is required.
+            </div>
+            <div *ngIf="pincode.errors?.['minlength']">
+                Pincode must be of length 4.
+            </div>
+            <div *ngIf="pincode.errors?.['pattern']">
+                Pincode can contain only numbers.
+            </div>
+    
+        </div>
+    
+
+        <button type="submit" [disabled]="demoForm.invalid">Submit</button>
+        <button type="button" (click)="demoForm.resetForm({})">Reset</button>
+  
+</div>
+
+<div *ngIf="demoForm.submitted">
+    <p>You've submitted your form,Name: {{ userName }}!</p>
+    <p>Pincode {{ pincode }}!</p>
+</div>
+
+</form>
